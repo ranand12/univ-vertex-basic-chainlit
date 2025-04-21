@@ -1,14 +1,15 @@
 import re
 import os
+import logging
 import urllib.parse
 import chainlit as cl
 from typing import List
+from pathlib import Path
 from dotenv import load_dotenv
 from google.api_core.client_options import ClientOptions
 from google.cloud import discoveryengine_v1 as discoveryengine
 
 # Set up logging
-import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
@@ -147,6 +148,14 @@ logger.info("Global client initialized")
 # Add a global variable to store the conversation name as a fallback
 GLOBAL_CONVERSATION_NAME = None
 
+# Register static files directory
+@cl.on_settings_update
+async def setup_static_files():
+    static_dir = Path(__file__).parent / "static"
+    if static_dir.exists():
+        logger.info(f"Registering static directory: {static_dir}")
+        cl.serve_static_files(static_dir)
+
 @cl.on_chat_start
 async def on_chat_start():
     """Initialize the conversation when a new chat starts."""
@@ -164,7 +173,7 @@ async def on_chat_start():
         logger.info("Conversation name stored in user session")
         
         await cl.Message(
-            content="Welcome to the Document Search Assistant. How can I help you today?",
+            content="Welcome to Fordham IT Document Search. How can I help you today?",
             type="system"
         ).send()
         logger.info("Welcome message sent")
@@ -172,8 +181,6 @@ async def on_chat_start():
         logger.error(f"Error initializing conversation: {str(e)}", exc_info=True)
         error_message = f"Failed to initialize conversation: {str(e)}"
         await cl.Message(content=error_message, type="error").send()
-
-# Source action callbacks removed as requested
 
 @cl.action_callback("new_conversation")
 async def on_new_conversation(action):
@@ -186,7 +193,7 @@ async def on_new_conversation(action):
         GLOBAL_CONVERSATION_NAME = conversation.name
         cl.user_session.set("conversation", conversation.name)
         await cl.Message(
-            content="Started a new conversation. What would you like to search for?",
+            content="Started a new conversation. What would you like to search for in the Fordham IT documents?",
             type="system"
         ).send()
     except Exception as e:

@@ -1,6 +1,6 @@
-# Document Search Assistant
+# Fordham IT Document Search
 
-Welcome to the Document Search Assistant! This application uses Vertex AI Search to help you find information in your documents.
+Welcome to the Fordham IT Document Search! This application uses Vertex AI Search to help you find information in your documents.
 
 ## Features
 

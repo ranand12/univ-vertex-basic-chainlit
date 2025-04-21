@@ -1,0 +1,30 @@
+/* Hide Chainlit logo and text */
+.logo-container img { display: none !important; }
+.logo-container svg { display: none !important; }
+.logo-container .logo-text { display: none !important; }
+.logo-container .logo-img { display: none !important; }
+
+/* Replace with Fordham IT text */
+.logo-container::before { 
+  content: 'Fordham IT'; 
+  font-size: 28px; 
+  font-weight: bold; 
+  color: #900028; 
+  font-family: Arial, sans-serif;
+}
+
+/* Hide any other Chainlit branding */
+img[alt='Chainlit'] { display: none !important; }
+svg[data-testid='logo'] { display: none !important; }
+
+/* Additional selectors to target the logo */
+.cl-header-logo-container { visibility: hidden; }
+.cl-header-logo-container::before {
+  content: 'Fordham IT';
+  visibility: visible;
+  font-size: 28px;
+  font-weight: bold;
+  color: #900028;
+  font-family: Arial, sans-serif;
+  position: absolute;
+}

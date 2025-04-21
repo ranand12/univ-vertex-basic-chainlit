@@ -1,4 +1,5 @@
-# Fordham University Vertex AI Search with Chainlit
+
+# Fordham IT Document Search
 
 A simple document search application using Chainlit for the frontend and Vertex AI Search for the backend.
 

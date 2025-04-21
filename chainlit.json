@@ -1,0 +1,19 @@
+{
+  "ui": {
+    "hide_cot": false,
+    "hide_footer": true,
+    "hide_prompt_playground": false,
+    "name": "Fordham IT",
+    "description": "Document Search Powered by Vertex AI",
+    "theme": "light",
+    "custom_css": ".logo-container img { display: none !important; } .logo-container svg { display: none !important; } .logo-container .logo-text { display: none !important; } .logo-container .logo-img { display: none !important; } .logo-container::before { content: 'Fordham IT'; font-size: 28px; font-weight: bold; color: #900028; font-family: Arial, sans-serif; } img[alt='Chainlit'] { display: none !important; } svg[data-testid='logo'] { display: none !important; } .cl-header-logo-container { visibility: hidden !important; } .cl-header-logo-container::before { content: 'Fordham IT'; visibility: visible; display: block; font-size: 28px; font-weight: bold; color: #900028; font-family: Arial, sans-serif; position: absolute; }"
+  },
+  "features": {
+    "prompt_playground": {
+      "enabled": false
+    }
+  },
+  "project": {
+    "name": "Fordham IT Document Search"
+  }
+}
